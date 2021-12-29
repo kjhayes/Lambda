@@ -1,0 +1,35 @@
+True := λx.λy.x
+False := λx.λy.y
+
+id := λx.x
+
+succ := λn.λf.λx.f (n f x)
+add := /n./a. n {succ} a
+mult := λm.λn.λf.λx.m(nf)x
+
+B := /f./g./x.f(gx)
+
+0 := {False}
+1 := λf.λx.fx
+2 := λf.λx.f(fx)
+3 := λf.λx.f(f(fx))
+5 := λf.λx.f(f(f(f(fx))))
+15 := {mult}{5}{3}
+30 := {mult}{15}{2}
+
+pair := /a./b./f.fab
+first := /p.p{True}
+second := /p.p{False}
+
+zero_pair := {pair}{0}{0}
+
+is_zero := /n.n(/x.{False}){True}
+
+pair_advance := /p.{pair}({second}p)({succ}({second}p))
+pred := /n.({is_zero}n)({0})({first}(n{pair_advance}{zero_pair}))
+
+sub := /a./b. b {pred} a
+
+Y := /f.(/x.f(xx))(/x.f(xx))
+
+main := {mult}{1}{1}
